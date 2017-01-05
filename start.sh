@@ -16,10 +16,12 @@ INIDIR=$(dirname $INIFILE)
 [ ! -f "$QUERY_IP_WHITELIST" ] && touch "$QUERY_IP_WHITELIST"
 [ ! -f "$QUERY_IP_BLACKLIST" ] && touch "$QUERY_IP_BLACKLIST"
 
-for i in MARIADB_HOST MARIADB_PORT MARIADB_DATABASE MARIADB_USER MARIADB_PASSWD
+for i in MARIADB_HOST MARIADB_DATABASE MARIADB_USER MARIADB_PASSWD
 do
   [ "${!i}" = "" ] && echo "Missing mandatory parameter $i" && exit 1
 done
+
+[ "$MARIADB_PORT" = "" ] && MARIADB_PORT=3306
 
 (
   echo "[config]"
