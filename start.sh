@@ -33,6 +33,14 @@ done
   echo "socket="
 ) > /opt/ts3/ts3db_mariadb.ini
 
+until nc -z -v -w5 $MARIADB_HOST $MARIADB_PORT
+do
+  echo "Waiting for MariaDB server $MARIADB_HOST to be reachable on port $MARIADB_PORT ..."
+  sleep 5
+done
+
+echo "Starting TS3 Server"
+ 
 cd /opt/ts3/
 exec ./ts3server_minimal_runscript.sh \
   default_voice_port=$DEFAULT_VOICE_PORT \

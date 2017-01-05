@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y libmariadb2 && apt-get clean
+RUN apt-get update && apt-get install -y libmariadb2 netcat && apt-get clean
 ADD ts3 /opt/ts3
 ADD start.sh /start.sh
 
