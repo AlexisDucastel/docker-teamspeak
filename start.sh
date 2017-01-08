@@ -2,7 +2,9 @@
 
 [ "$DEFAULT_VOICE_PORT" = "" ] && DEFAULT_VOICE_PORT=9987
 [ "$FILETRANSFER_PORT" = "" ] && FILETRANSFER_PORT=30033
+[ "$FILETRANSFER_IP" = "" ] && FILETRANSFER_IP="0.0.0.0,0::0"
 [ "$QUERY_PORT" = "" ] && QUERY_PORT=10011
+[ "$QUERY_IP" = "" ] && QUERY_IP="0.0.0.0,0::0"
 #[ "$MACHINE_ID" = "" ] && MACHINE_ID="$(hostname)"
 [ "$LOGPATH" = "" ] && LOGPATH=/data/log
 [ "$INIFILE" = "" ] && INIFILE=/data/config/ts3server.ini
@@ -40,12 +42,14 @@ do
 done
 
 echo "Starting TS3 Server"
- 
+
 cd /opt/ts3/
 exec ./ts3server_minimal_runscript.sh \
   default_voice_port=$DEFAULT_VOICE_PORT \
   filetransfer_port=$FILETRANSFER_PORT \
+  filetransfer_ip=$FILETRANSFER_IP \
   query_port=$QUERY_PORT \
+  query_ip=$QUERY_IP \
   machine_id=$MACHINE_ID \
   logpath=$LOGPATH \
   licensepath=$LICENSEPATH \
