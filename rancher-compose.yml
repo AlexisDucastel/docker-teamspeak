@@ -1,0 +1,8 @@
+ts-srv-data:
+  scale: 1
+teamspeak-db:
+  scale: 1
+ts-db-data:
+  scale: 1
+teamspeak-server:
+  scale: 1
